@@ -8,6 +8,7 @@ LinkedList V = new LinkedList();
      V.add(1);
         V.add(7);
         V.show();
+//просто слово
         V.remove(8);
         V.show();
     }
