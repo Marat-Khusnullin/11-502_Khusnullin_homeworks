@@ -23,7 +23,7 @@ public class GraphTestModule {
         actual = test.runFloyd();
         expected = new int[][]{{0, 7, 8},{0,0,1},{0,0,0}
         };
-        //equals1(expected, actual);
+       
 System.out.println(equals1(expected, actual));
 
 
