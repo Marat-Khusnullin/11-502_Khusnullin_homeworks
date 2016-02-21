@@ -3,9 +3,10 @@ package ru.itis.inform;
 /**
  * Created by Марат on 16.02.2016.
  */
-public interface GraphInt {
+public interface Graph {
     void addVertex();
-    void addEdge(int A, int B,int C);
+    void addEdge(int A, int B);
     void showGraph();
+    int[][] runFloyd();
 }
 
