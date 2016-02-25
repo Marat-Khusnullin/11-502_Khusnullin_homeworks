@@ -1,4 +1,4 @@
-package ru.itis.inform;
+package ru.itis.inform.Version1ByArray;
 
 /**
  * Created by Марат on 14.02.2016.
