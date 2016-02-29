@@ -1,19 +1,23 @@
 package ru.itis.inform;
 
 public class LinkedListIteratorImpl<T> implements Iterator<T> {
-    //Почему так задается?
-     Node<T> current;
+     private Node<T> current;
 
     public LinkedListIteratorImpl (Node<T> first) {
+
         this.current = first;
     }
-
-
 
 
     public boolean hasNext() {
 
         return current !=null;
+    }
+
+
+    public boolean hasPrev() {
+
+        return current.getPrevious() !=null;
     }
 
     public T next() {
@@ -23,13 +27,12 @@ public class LinkedListIteratorImpl<T> implements Iterator<T> {
 
     }
 
-    public void back() {
-        LinkedList t;
-        t = new LinkedList();
-        current = t.getFirst();
-
-       /* current.setPrevious(null);
-        current.setNext(t.getFirst());*/
+    public T previous() {
+        if (hasPrev()) {
+            current = current.getPrevious();
+            return current.getValue();
+        } else
+            throw new IllegalArgumentException();
     }
 
     public T pickNext() {
@@ -38,23 +41,11 @@ public class LinkedListIteratorImpl<T> implements Iterator<T> {
     }
 
     public T pickPrevious() {
-         T value = (T) current.getPrevious();
+        T value = (T) current.getPrevious();
         return value;
 
     }
-   public boolean hasPrev() {
-       return current.getPrevious() !=null;
-   }
 
-
-
-  public T previous() {
-        if (hasPrev()) {
-            current = current.getPrevious();
-            return current.getValue();
-       } else
-            throw new IllegalArgumentException();
-    }
 
     public void insert (T element) {
            Node <T> newnode = new Node<>(element);

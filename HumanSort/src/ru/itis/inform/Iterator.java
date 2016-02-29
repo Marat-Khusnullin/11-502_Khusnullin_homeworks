@@ -8,6 +8,5 @@ public interface Iterator<T> {
     T previous();
     T pickNext();
     T pickPrevious();
-    void back();
     void insert(T element);
 }
