@@ -12,37 +12,38 @@ public class HumansReaderWriter {
         public LinkedList<Human> readHumans()
                 throws FileNotFoundException {
 
-            Scanner sc = new Scanner(new File("C:\\Users\\Марат\\Desktop\\11-502_Khusnullin_Homeworks\\HumanSort\\src\\ru\\itis\\inform\\input\\Humans.txt"));
+            Scanner sc = new Scanner(new File("C:\\Users\\Марат\\Desktop\\11-502_Khusnullun_Homeworks\\HumanSort\\src\\main\\java\\ru\\itis\\inform\\Humans.txt"));
             LinkedList<Human> humanLinkedList = new LinkedList<>();
 
             Human human;
 
             while (sc.hasNext()) {
-
                 int age = sc.nextInt();
+
                 String name = sc.nextLine();
 
                 human = new Human(age, name);
 
                 humanLinkedList.addToEnd(human);
+
             }
             sc.close();
             return humanLinkedList;
         }
 
-        public void writeHumans(String fileName, LinkedList<Human> humanLinkedList) throws FileNotFoundException {
-            PrintWriter pw = new PrintWriter(new File("C:\\Users\\Марат\\Desktop\\11-502_Khusnullin_Homeworks\\HumanSort\\src\\ru\\itis\\inform\\output\\"+fileName+".txt"));
+        public void writeHumans( LinkedList<Human> humanLinkedList) throws FileNotFoundException {
+            PrintWriter writer = new PrintWriter(new File("C:\\Users\\Марат\\Desktop\\11-502_Khusnullun_Homeworks\\HumanSort\\src\\main\\java\\ru\\itis\\inform\\SortedHumans.txt"));
 
             Iterator<Human> iterator = humanLinkedList.iterator();
 
             while (iterator.hasNext()) {
-                pw.println(iterator.pickNext().toString()+" ");
+                writer.println(iterator.pickNext().toString()+" ");
                 iterator.next();
             }
 
 
 
-            pw.close();
+            writer.close();
 
         }
 }
