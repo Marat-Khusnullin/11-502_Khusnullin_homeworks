@@ -1,6 +1,8 @@
 package ru.itis.inform;
 
 
+import ru.itis.inform.Human;
+
 public class HumansSorter {
 
     ArrayList<LinkedList<Human>> arrayList = new ArrayList<>();
@@ -27,20 +29,20 @@ public class HumansSorter {
 
 
             while (iterator.hasNext()) {
-                char[] nameByArray = iterator.pickNext().getName().toCharArray();
-
-                int j = toCode(nameByArray[i]);
-                if (arrayList.get(j) == null) {
-                    arrayList.set(j, new LinkedList<Human>());
+                if (iterator.pickNext()!= null) {
+                    char[] nameByArray = iterator.pickNext().getName().toCharArray();
+                    int j = toCode(nameByArray[i]);
+                    if (arrayList.get(j) == null) {
+                        arrayList.set(j, new LinkedList<Human>());
+                    }
+                    arrayList.get(j).addToEnd(iterator.pickNext());
                 }
-                arrayList.get(j).addToEnd(iterator.pickNext());
-
                 iterator.next();
             }
 
             LinkedList<Human> m = new LinkedList<Human>();
             m.add(null);
-            for (int e = 25; e>=0; e--) {
+            for (int e = 0; e<=25; e++) {
                 if (arrayList.get(e)!= null) {
                     m.append(arrayList.get(e));
                 }
@@ -51,7 +53,6 @@ public class HumansSorter {
             iterator.back(humanLinkedList);
 
         }
-
         return humanLinkedList;
     }
 
