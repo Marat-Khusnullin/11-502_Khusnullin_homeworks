@@ -6,7 +6,13 @@ public class LinkedList<T> implements ListInter<T> {
     private int count;
     private Node<T> first;
     private Node<T> last;
+    public int getCount() {
+    return count;
+    }
 
+    public void setCount(int count) {
+        this.count = count;
+    }
     public LinkedList() {
         this.first = null;
     }
@@ -27,6 +33,111 @@ public class LinkedList<T> implements ListInter<T> {
         }
         this.count++;
     }
+
+    public static  <T extends Comparable<T>> LinkedList<T> doMerge(LinkedList<T> a, LinkedList<T> b) {
+        Iterator<T> iteratorByA = a.iterator();
+        Iterator<T> iteratorByB = b.iterator();
+        T value1 = iteratorByA.pickNext();
+        T value2 = iteratorByB.pickNext();
+
+
+        LinkedList<T> s = new LinkedList<>();
+        while (iteratorByA.hasNext() && iteratorByB.hasNext()) {
+            switch (value1.compareTo(value2)) {
+                case -1: {
+                    s.addToEnd(value1);
+                    iteratorByA.next();
+                    if(iteratorByA.hasNext()) {
+                        value1 = iteratorByA.pickNext();
+                    }
+                }
+                break;
+                case 0: {
+                   // System.out.println("case 0");
+                    s.addToEnd(value1);
+                    iteratorByA.next();
+                    if(iteratorByA.hasNext()) {
+                        value1 = iteratorByA.pickNext();
+                    }
+                    s.addToEnd(value2);
+                    iteratorByB.next();
+                    if(iteratorByB.hasNext()) {
+                        value2 = iteratorByB.pickNext();
+                    }
+                }
+                break;
+                case 1: {
+                    s.addToEnd(value2);
+                    iteratorByB.next();
+                    if(iteratorByB.hasNext()) {
+                        value2 = iteratorByB.pickNext();
+                    }
+                }
+                break;
+
+            }
+        }
+
+
+        while (iteratorByA.hasNext()) {
+            s.addToEnd(iteratorByA.pickNext());
+            iteratorByA.next();
+        }
+
+        while (iteratorByB.hasNext()) {
+
+            s.addToEnd(iteratorByB.pickNext());
+            iteratorByB.next();
+
+        }
+        return s;
+        }
+
+    public static <T extends Comparable> LinkedList<T> mergeSort(LinkedList<T> linkedList) {
+        ArrayList<LinkedList<T>> arrayList = new ArrayList<LinkedList<T>>();
+
+        for (int i = 0; i <= linkedList.getCount(); i++) {
+            arrayList.set(i, new LinkedList<T>());
+        }
+        int countOfArray =0;
+        Iterator<T> iteratorOfList = linkedList.iterator();
+        int check = 0;
+        /*arrayList.get(0).addToEnd(iteratorOfList.pickNext());
+        iteratorOfList.next();*/
+        while (arrayList.get(0).getCount()!= linkedList.getCount()) {
+            for (int i= countOfArray; i>=1; i--) {
+                if ((arrayList.get(i).getCount() == arrayList.get(i - 1).getCount())&&(arrayList.get(i).getCount()!= 0)) {
+                    arrayList.set(i - 1, doMerge(arrayList.get(i), arrayList.get(i - 1)));
+                    arrayList.set(i, new LinkedList<T>());
+                    countOfArray -= 1;
+                //    System.out.println("posle sliyaniya count=" + countOfArray);
+                    check =1;
+                }
+                if (!iteratorOfList.hasNext() && check!=1) {
+                    for ( i = countOfArray-1;i>=1;i--) {
+                        arrayList.set(i-1, doMerge(arrayList.get(i), arrayList.get(i-1)));
+                    }
+                }
+            }
+            if(iteratorOfList.hasNext()) {
+                arrayList.get(countOfArray).addToEnd(iteratorOfList.pickNext());
+                iteratorOfList.next();
+                countOfArray+=1;
+               // System.out.println("posle dobavlENIYA count =" + countOfArray);
+            }
+            check=0;
+        }
+
+
+     //arrayList.get(0).show();
+        return arrayList.get(0);
+    }
+
+
+
+
+
+
 
 
         public void addToEnd (T element) {

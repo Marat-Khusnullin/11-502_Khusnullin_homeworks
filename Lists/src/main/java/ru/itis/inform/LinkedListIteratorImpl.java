@@ -7,7 +7,10 @@ public class LinkedListIteratorImpl<T> implements Iterator<T> {
 
         this.current = first;
     }
+    public void back (LinkedList<T> linkedList) {
 
+        this.current = linkedList.getFirst();
+    }
 
     public boolean hasNext() {
 
@@ -24,7 +27,6 @@ public class LinkedListIteratorImpl<T> implements Iterator<T> {
         T value = current.getValue();
         this.current = current.getNext();
         return value;
-
     }
 
     public T previous() {
