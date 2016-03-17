@@ -121,6 +121,7 @@ public class LinkedList<T> implements ListInter<T> {
                 iteratorOfList.next();
                 countOfArray+=1;
             }
+            System.out.println("2");
             check=0;
         }
         return arrayList.get(0);
