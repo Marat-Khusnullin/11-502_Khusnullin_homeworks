@@ -102,15 +102,12 @@ public class LinkedList<T> implements ListInter<T> {
         int countOfArray =0;
         Iterator<T> iteratorOfList = linkedList.iterator();
         int check = 0;
-        /*arrayList.get(0).addToEnd(iteratorOfList.pickNext());
-        iteratorOfList.next();*/
         while (arrayList.get(0).getCount()!= linkedList.getCount()) {
             for (int i= countOfArray; i>=1; i--) {
                 if ((arrayList.get(i).getCount() == arrayList.get(i - 1).getCount())&&(arrayList.get(i).getCount()!= 0)) {
                     arrayList.set(i - 1, doMerge(arrayList.get(i), arrayList.get(i - 1)));
                     arrayList.set(i, new LinkedList<T>());
                     countOfArray -= 1;
-                //    System.out.println("posle sliyaniya count=" + countOfArray);
                     check =1;
                 }
                 if (!iteratorOfList.hasNext() && check!=1) {
@@ -123,13 +120,9 @@ public class LinkedList<T> implements ListInter<T> {
                 arrayList.get(countOfArray).addToEnd(iteratorOfList.pickNext());
                 iteratorOfList.next();
                 countOfArray+=1;
-               // System.out.println("posle dobavlENIYA count =" + countOfArray);
             }
             check=0;
         }
-
-
-     //arrayList.get(0).show();
         return arrayList.get(0);
     }
 
