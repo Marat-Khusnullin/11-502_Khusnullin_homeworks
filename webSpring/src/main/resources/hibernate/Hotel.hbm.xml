@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ru.models.Hotel" table="hotel_table" catalog="public">
+        <id name="id" column="id" type="java.lang.Integer">
+
+            <generator class="identity"/>
+        </id>
+
+        <property name="name" column="name" type="java.lang.String"/>
+        <property name="rating" column="rating" type="java.lang.Integer"/>
+        <property name="dopInfo" column="dopInfo" type="java.lang.String"/>
+
+
+
+        <many-to-one name="city" class="ru.models.City" fetch="select" lazy="false">
+            <column name="id_city" not-null="true"/>
+        </many-to-one>
+
+    </class>
+</hibernate-mapping>

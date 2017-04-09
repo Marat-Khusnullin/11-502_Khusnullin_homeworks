@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+
+
+
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextClass</param-name>
+            <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+        </init-param>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>ru.config.NewConfig</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+
+   <!-- <servlet>
+        <servlet-name>citiesServlet</servlet-name>
+        <servlet-class>ru.servlets.CitiesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>citiesServlet</servlet-name>
+        <url-pattern>/cities</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>hotelsServlet</servlet-name>
+        <servlet-class>ru.servlets.HotelsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>hotelsServlet</servlet-name>
+        <url-pattern>/hotels</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>newCity</servlet-name>
+        <servlet-class>ru.servlets.AddCityServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>newCity</servlet-name>
+        <url-pattern>/newCity</url-pattern>
+    </servlet-mapping>-->
+
+    <listener>
+        <listener-class>ru.listener.SpringContextListener</listener-class>
+    </listener>
+
+
+</web-app>
